@@ -16,6 +16,7 @@
 		395F76DF21B7985600C92ED6 /* YJGraphViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76DE21B7985600C92ED6 /* YJGraphViewTests.m */; };
 		395F76EA21B7985600C92ED6 /* YJGraphViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76E921B7985600C92ED6 /* YJGraphViewUITests.m */; };
 		395F76FB21B798F100C92ED6 /* YJGraphBrokenLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */; };
+		395F76FF21B7D34200C92ED6 /* YJGraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		395F76EB21B7985600C92ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		395F76F921B798F100C92ED6 /* YJGraphBrokenLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJGraphBrokenLineView.h; sourceTree = "<group>"; };
 		395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphBrokenLineView.m; sourceTree = "<group>"; };
+		395F76FD21B7D34200C92ED6 /* YJGraphBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJGraphBarView.h; sourceTree = "<group>"; };
+		395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphBarView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,7 @@
 		395F76F721B7989E00C92ED6 /* YJGraphView */ = {
 			isa = PBXGroup;
 			children = (
+				395F76FC21B7D33200C92ED6 /* YJGraphBarView */,
 				395F76F821B7989E00C92ED6 /* YJGraphBrokenLineView */,
 			);
 			path = YJGraphView;
@@ -151,6 +155,15 @@
 				395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */,
 			);
 			path = YJGraphBrokenLineView;
+			sourceTree = "<group>";
+		};
+		395F76FC21B7D33200C92ED6 /* YJGraphBarView */ = {
+			isa = PBXGroup;
+			children = (
+				395F76FD21B7D34200C92ED6 /* YJGraphBarView.h */,
+				395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */,
+			);
+			path = YJGraphBarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +298,7 @@
 			files = (
 				395F76CA21B7985400C92ED6 /* ViewController.m in Sources */,
 				395F76D521B7985600C92ED6 /* main.m in Sources */,
+				395F76FF21B7D34200C92ED6 /* YJGraphBarView.m in Sources */,
 				395F76C721B7985400C92ED6 /* AppDelegate.m in Sources */,
 				395F76FB21B798F100C92ED6 /* YJGraphBrokenLineView.m in Sources */,
 			);

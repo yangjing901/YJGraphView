@@ -1,14 +1,14 @@
 //
-//  YJGraphBrokenLineView.m
+//  YJGraphBarView.m
 //  YJGraphView
 //
 //  Created by Yang on 2018/12/5.
 //  Copyright © 2018 YangJing. All rights reserved.
 //
 
-#import "YJGraphBrokenLineView.h"
+#import "YJGraphBarView.h"
 
-@implementation YJGraphBrokenLineView {
+@implementation YJGraphBarView {
     NSArray <NSString *> *_xAxisItems;  //横轴坐标项
     BOOL _xAxisAutoFitWidth;            //横轴坐标单位长度是否根据横轴坐标项数量适应；
     
@@ -127,7 +127,7 @@
     
     //纵轴单位高度
     CGFloat yAxisItemHeight = contentHeight/(itemCount+1);
-
+    
     for (NSInteger i = 0; i < itemCount; i++) {
         //纵轴刻度位置
         CGFloat yAxisItemPositionY = contentHeight - yAxisItemHeight*(i+1);
@@ -142,7 +142,7 @@
         subLineLayer.strokeColor = [UIColor whiteColor].CGColor;
         subLineLayer.path = subPath.CGPath;
         [self.layer addSublayer:subLineLayer];
-
+        
         CGFloat yAxisItem = (maxItem-minItem)/(itemCount-1)*i+minItem;
         
         UILabel *yAxisItemLabel = ({
@@ -178,7 +178,7 @@
     CGFloat viewWidth = CGRectGetWidth(self.bounds);
     CGFloat yAxisItemHeight = (viewHeight-60*2)/(_yAxisItemsCount+1);
     CGFloat yAxisItemOffset = (_yAxisMaxItemVaule-_yAxisMinItemVaule)/(_yAxisItemsCount-1);
-
+    
     CGFloat xAxisItemWidth;
     if (!_xAxisAutoFitWidth) {
         xAxisItemWidth = 30;
@@ -188,7 +188,7 @@
         
     }
     CGFloat contentHeight = CGRectGetHeight(_xAxisView.bounds)-60;
-
+    
     //设置折线属性
     CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
     shapeLayer.lineWidth = 0.5;
@@ -196,7 +196,7 @@
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
-
+    
     for (NSInteger i = 0, count = dataArray.count; i<count; i++) {
         //计算数据点的坐标
         CGFloat itemPositionX = xAxisItemWidth*i;
@@ -208,7 +208,7 @@
             
         } else if (item > _yAxisMaxItemVaule) {
             itemPositionY = 30 - 30*((item-_yAxisMaxItemVaule)/yAxisItemOffset);
-
+            
         } else {
             itemPositionY = contentHeight - (yAxisItemHeight + item/_yAxisMaxItemVaule*(contentHeight-30-yAxisItemHeight));
         }
@@ -245,7 +245,7 @@
             itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
         } else {
             itemLabel.center = CGPointMake(itemPositionX, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
-
+            
         }
     }
     
@@ -261,5 +261,6 @@
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
     [shapeLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
+
 
 @end

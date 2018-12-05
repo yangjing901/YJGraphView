@@ -1,18 +1,18 @@
 //
-//  YJGraphBrokenLineView.h
+//  YJGraphBarView.h
 //  YJGraphView
 //
 //  Created by Yang on 2018/12/5.
 //  Copyright © 2018 YangJing. All rights reserved.
 //
 
-/* 折线统计图 */
+/* 条形统计图 */
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface YJGraphBrokenLineView : UIView
+@interface YJGraphBarView : UIView
 
 /**
  *  设置横轴坐标
