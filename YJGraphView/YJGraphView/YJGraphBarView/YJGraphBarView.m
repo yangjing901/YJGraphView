@@ -52,12 +52,12 @@
     //横轴单位长度
     CGFloat xAxisItemWidth;
     if (!autoFitWidth) {
-        _xAxisView.contentSize = CGSizeMake(30*xAxisItems.count, 0);
+        _xAxisView.contentSize = CGSizeMake(30*(xAxisItems.count*2+1), 0);
         xAxisItemWidth = 30;
         
     } else {
         _xAxisView.contentSize = CGSizeMake(viewWidth-60*2, 0);
-        xAxisItemWidth = (viewWidth-60*2)/xAxisItems.count;
+        xAxisItemWidth = (viewWidth-60*2)/(xAxisItems.count*2+1);
         
     }
     
@@ -75,7 +75,7 @@
     [_xAxisView.layer addSublayer:lineLayer];
     
     //设置横轴坐标
-    for (NSInteger i = 0, count = xAxisItems.count; i<count; i++) {
+    for (NSInteger i = 0, count = xAxisItems.count*2+1; i<count; i++) {
         
         CGFloat xAxisItemPositionX = xAxisItemWidth*i;
         
@@ -92,22 +92,25 @@
             [_xAxisView.layer addSublayer:subLineLayer];
         }
         
-        UILabel *xAxisItemLabel = ({
-            UILabel *label = [[UILabel alloc] init];
-            label.font = [UIFont systemFontOfSize:10];
-            label.textColor = [UIColor whiteColor];
-            label.textAlignment = NSTextAlignmentRight;
-            label.text = xAxisItems[i];
-            label;
-        });
-        [_xAxisView addSubview:xAxisItemLabel];
-        
-        CGFloat textWidth = [xAxisItems[i] boundingRectWithSize:CGSizeMake(MAXFLOAT, [UIFont systemFontOfSize:10].lineHeight) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil].size.width;
-        
-        xAxisItemLabel.frame = CGRectMake(xAxisItemPositionX, contentHeight+textWidth/2, textWidth, [UIFont systemFontOfSize:10].lineHeight);
-        
-        //防止横轴标识显示不下，这里旋转45度
-        xAxisItemLabel.transform = CGAffineTransformMakeRotation(M_PI/4.0);
+        if (i%2) {
+            UILabel *xAxisItemLabel = ({
+                UILabel *label = [[UILabel alloc] init];
+                label.font = [UIFont systemFontOfSize:10];
+                label.textColor = [UIColor whiteColor];
+                label.textAlignment = NSTextAlignmentCenter;
+                label.text = xAxisItems[i/2];
+                label;
+            });
+            [_xAxisView addSubview:xAxisItemLabel];
+            
+            CGFloat textWidth = [xAxisItems[i/2] boundingRectWithSize:CGSizeMake(MAXFLOAT, [UIFont systemFontOfSize:10].lineHeight) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil].size.width;
+            
+            xAxisItemLabel.frame = CGRectMake(xAxisItemPositionX, contentHeight+textWidth/2, textWidth, [UIFont systemFontOfSize:10].lineHeight);
+            xAxisItemLabel.center = CGPointMake(xAxisItemPositionX+xAxisItemWidth/2, contentHeight+textWidth/2+[UIFont systemFontOfSize:10].lineHeight/2);
+            
+            //防止横轴标识显示不下，这里旋转45度
+            xAxisItemLabel.transform = CGAffineTransformMakeRotation(M_PI/4.0);
+        }
     }
 }
 
@@ -171,35 +174,36 @@
     }
 }
 
-/* 画折线图 */
+/* 画条形图 */
 - (void)setDataArray:(NSArray<NSNumber *> *)dataArray lineColor:(UIColor *)lineColor {
     
     CGFloat viewHeight = CGRectGetHeight(self.bounds);
     CGFloat viewWidth = CGRectGetWidth(self.bounds);
     CGFloat yAxisItemHeight = (viewHeight-60*2)/(_yAxisItemsCount+1);
     CGFloat yAxisItemOffset = (_yAxisMaxItemVaule-_yAxisMinItemVaule)/(_yAxisItemsCount-1);
-    
+
     CGFloat xAxisItemWidth;
     if (!_xAxisAutoFitWidth) {
         xAxisItemWidth = 30;
-        
     } else {
-        xAxisItemWidth = (viewWidth-60*2)/_xAxisItems.count;
+        xAxisItemWidth = ((viewWidth-60*2)/(_xAxisItems.count*2+1));
         
     }
     CGFloat contentHeight = CGRectGetHeight(_xAxisView.bounds)-60;
     
-    //设置折线属性
+    //设置条形图属性
     CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
-    shapeLayer.lineWidth = 0.5;
+    shapeLayer.lineWidth = xAxisItemWidth;
     shapeLayer.strokeColor = lineColor.CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     
     for (NSInteger i = 0, count = dataArray.count; i<count; i++) {
-        //计算数据点的坐标
-        CGFloat itemPositionX = xAxisItemWidth*i;
+        //计算数据点的坐标,画线的起点位置为线的中心点，所以多偏移xAxisItemWidth/2
+        CGFloat itemPositionX = xAxisItemWidth*(i*2+1)+(xAxisItemWidth/2);
+    
+        [path moveToPoint:CGPointMake(itemPositionX, contentHeight)];
         
         CGFloat item = [dataArray[i] floatValue];
         CGFloat itemPositionY;
@@ -213,22 +217,7 @@
             itemPositionY = contentHeight - (yAxisItemHeight + item/_yAxisMaxItemVaule*(contentHeight-30-yAxisItemHeight));
         }
         
-        if (i == 0) {
-            [path moveToPoint:CGPointMake(itemPositionX, itemPositionY)];
-            
-        } else {
-            [path addLineToPoint:CGPointMake(itemPositionX, itemPositionY)];
-        }
-        
-        UIView *pointView = ({
-            UIView *view = [[UIView alloc] init];
-            view.backgroundColor = lineColor;
-            view.layer.cornerRadius = 1.5;
-            view;
-        });
-        [_xAxisView addSubview:pointView];
-        pointView.frame = CGRectMake(0, 0, 3, 3);
-        pointView.center = CGPointMake(itemPositionX, itemPositionY);
+        [path addLineToPoint:CGPointMake(itemPositionX, itemPositionY)];
         
         UILabel *itemLabel = ({
             UILabel *label = [[UILabel alloc] init];
@@ -238,15 +227,9 @@
             label;
         });
         [_xAxisView addSubview:itemLabel];
-        itemLabel.frame = CGRectMake(0, 0, xAxisItemWidth, [UIFont systemFontOfSize:6].lineHeight);
-        
-        //第一个数据显示的位置往右偏，防止超出坐标轴
-        if (i == 0) {
-            itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
-        } else {
-            itemLabel.center = CGPointMake(itemPositionX, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
-            
-        }
+        itemLabel.frame = CGRectMake(0, 0, xAxisItemWidth*2, [UIFont systemFontOfSize:6].lineHeight);
+        itemLabel.center = CGPointMake(itemPositionX-xAxisItemWidth/2, itemPositionY-[UIFont systemFontOfSize:6].lineHeight);
+
     }
     
     shapeLayer.path = path.CGPath;
