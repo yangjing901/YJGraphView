@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  设置数据源 （数据源数量应与横轴坐标数对应）
  *  dataArray : 数据源
- *  lineColor : 折线颜色
+ *  lineColor : 条形颜色
  */
 - (void)setDataArray:(NSArray<NSNumber *> *)dataArray lineColor:(UIColor *)lineColor;
 

@@ -10,6 +10,7 @@
 
 #import "YJGraphBrokenLineView.h"
 #import "YJGraphBarView.h"
+#import "YJGraphPieView.h"
 
 @interface ViewController ()
 
@@ -23,24 +24,16 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    YJGraphBarView *barView = ({
-        YJGraphBarView *view = [[YJGraphBarView alloc] init];
-        view.backgroundColor = [UIColor lightGrayColor];
+    YJGraphPieView *pieView = ({
+        YJGraphPieView *view = [[YJGraphPieView alloc] init];
+        view.backgroundColor = [UIColor whiteColor];
         view;
     });
-    [self.view addSubview:barView];
+    [self.view addSubview:pieView];
     
-    barView.frame = CGRectMake(20, 20, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetWidth([UIScreen mainScreen].bounds)/4*3);
+    pieView.frame = CGRectMake(20, 20, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetWidth([UIScreen mainScreen].bounds)-40);
     
-    [barView setXAxisItems: @[@"1 月",@"2 月",@"3 月",@"4 月",@"5 月",@"6 月",@"7 月",@"8 月",@"9 月",@"10 月",@"11 月",@"12 月"] autoFitWidth:NO];
-    [barView setYAxisMaxItem:10000 minItem:1000 itemCount:6];
-
-    NSMutableArray *dataArray = [[NSMutableArray alloc] init];
-    for (NSInteger i = 0; i < 12; i++) {
-        NSInteger num = random()%10000 + random()%1000;
-        [dataArray addObject:[NSNumber numberWithInteger:num]];
-    }
-    [barView setDataArray:dataArray lineColor:[UIColor greenColor]];
+    [pieView setDataArray:@[@(0.25), @(0.25), @(0.25), @(0.25)]];
 }
 
 
