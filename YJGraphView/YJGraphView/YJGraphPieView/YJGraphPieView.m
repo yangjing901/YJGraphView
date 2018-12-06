@@ -63,16 +63,15 @@
         UIBezierPath *path2 = [UIBezierPath bezierPath];
         
         CGFloat descHeight = [UIFont systemFontOfSize:10].lineHeight+10;
+        CGFloat linePointY;
         
         if (centerAngle > -M_PI/2.0 && centerAngle <= 0) {
             targetPointX = center.x + (targetPointX + 5);
             targetPointY = center.y - (targetPointY + 5);
             
-            CGFloat linePointY = descHeight*(i+1);
-            CGFloat linePointX = center.x + fabs((center.y-linePointY)/tan(centerAngle));
-
+            linePointY = descHeight*(i+1);
             [path2 moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [path2 addLineToPoint:CGPointMake(linePointX, linePointY)];
+            [path2 addLineToPoint:CGPointMake(viewWidth-40, linePointY)];
             [path2 addLineToPoint:CGPointMake(viewWidth, linePointY)];
             
             UILabel *itemLabel = ({
@@ -91,11 +90,9 @@
             targetPointX = center.x + (targetPointX + 5);
             targetPointY = center.y + (targetPointY + 5);
             
-            CGFloat linePointY = descHeight*(i+1)+center.y;
-            CGFloat linePointX = center.x + fabs((linePointY-center.y)/tan(centerAngle));
-            
+            linePointY = descHeight*(i+1)+center.y;
             [path2 moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [path2 addLineToPoint:CGPointMake(linePointX, linePointY)];
+            [path2 addLineToPoint:CGPointMake(viewWidth-40, linePointY)];
             [path2 addLineToPoint:CGPointMake(viewWidth, linePointY)];
             
             UILabel *itemLabel = ({
@@ -103,8 +100,8 @@
                 label.font = [UIFont systemFontOfSize:10];
                 label.textColor = fillColor;
                 label.textAlignment = NSTextAlignmentRight;
-                label.text = [NSString stringWithFormat:@"%.0f%%", persent*100];
                 label.adjustsFontSizeToFitWidth = YES;
+                label.text = [NSString stringWithFormat:@"%.0f%%", persent*100];
                 label;
             });
             [self addSubview:itemLabel];
@@ -114,23 +111,43 @@
             targetPointX = center.x - (targetPointX + 5);
             targetPointY = center.y + (targetPointY + 5);
             
-            CGFloat linePointY = viewHeight/(count*2)*(i+1);
-            CGFloat linePointX = center.x + fabs((center.y-linePointY)/tan(centerAngle));
-            
+            linePointY = descHeight*(i+1)+center.y;
             [path2 moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [path2 addLineToPoint:CGPointMake(linePointX, linePointY)];
-            [path2 addLineToPoint:CGPointMake(viewWidth, linePointY)];
+            [path2 addLineToPoint:CGPointMake(40, linePointY)];
+            [path2 addLineToPoint:CGPointMake(0, linePointY)];
+            
+            UILabel *itemLabel = ({
+                UILabel *label = [[UILabel alloc] init];
+                label.font = [UIFont systemFontOfSize:10];
+                label.textColor = fillColor;
+                label.textAlignment = NSTextAlignmentLeft;
+                label.adjustsFontSizeToFitWidth = YES;
+                label.text = [NSString stringWithFormat:@"%.0f%%", persent*100];
+                label;
+            });
+            [self addSubview:itemLabel];
+            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
             
         } else {
             targetPointX = center.x - (targetPointX + 5);
             targetPointY = center.y - (targetPointY + 5);
             
-            CGFloat linePointY = viewHeight/(count*2)*(i+1);
-            CGFloat linePointX = center.x + fabs((center.y-linePointY)/tan(centerAngle));
-            
+            linePointY = descHeight*(i+1);
             [path2 moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [path2 addLineToPoint:CGPointMake(linePointX, linePointY)];
-            [path2 addLineToPoint:CGPointMake(viewWidth, linePointY)];
+            [path2 addLineToPoint:CGPointMake(4, linePointY)];
+            [path2 addLineToPoint:CGPointMake(0, linePointY)];
+            
+            UILabel *itemLabel = ({
+                UILabel *label = [[UILabel alloc] init];
+                label.font = [UIFont systemFontOfSize:10];
+                label.textColor = fillColor;
+                label.textAlignment = NSTextAlignmentLeft;
+                label.adjustsFontSizeToFitWidth = YES;
+                label.text = [NSString stringWithFormat:@"%.0f%%", persent*100];
+                label;
+            });
+            [self addSubview:itemLabel];
+            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
         }
         
         UIView *pointView = ({
