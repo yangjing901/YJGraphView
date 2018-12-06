@@ -134,7 +134,7 @@
             
             linePointY = descHeight*(i+1);
             [path2 moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [path2 addLineToPoint:CGPointMake(4, linePointY)];
+            [path2 addLineToPoint:CGPointMake(40, linePointY)];
             [path2 addLineToPoint:CGPointMake(0, linePointY)];
             
             UILabel *itemLabel = ({
