@@ -184,24 +184,24 @@
         [self.layer addSublayer:shapeLayer];
     }
     
-//    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(viewWidth/2, viewWidth/2) radius:viewWidth/2 startAngle:-M_PI/2.0 endAngle:2*M_PI-M_PI/2.0 clockwise:YES];
-//
-//    //画圆
-//    CAShapeLayer *shapeLayer = [CAShapeLayer new];
-//    shapeLayer.strokeColor = self.backgroundColor.CGColor;
-//    shapeLayer.fillColor = [UIColor clearColor].CGColor;
-//    shapeLayer.lineWidth = viewWidth/2;
-//    shapeLayer.path = path.CGPath;
-//    self.layer.mask = shapeLayer;
-//
-//    //设置动画
-//    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    pathAnimation.duration = 3;
-//    pathAnimation.repeatCount = 1;
-//    pathAnimation.removedOnCompletion = YES;
-//    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
-//    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
-//    [shapeLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:viewWidth/2 startAngle:-M_PI/2.0 endAngle:2*M_PI-M_PI/2.0 clockwise:YES];
+
+    //画圆
+    CAShapeLayer *shapeLayer = [CAShapeLayer new];
+    shapeLayer.strokeColor = self.backgroundColor.CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.lineWidth = viewWidth;
+    shapeLayer.path = path.CGPath;
+    self.layer.mask = shapeLayer;
+
+    //设置动画
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 3;
+    pathAnimation.repeatCount = 1;
+    pathAnimation.removedOnCompletion = YES;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [shapeLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
 
 @end
