@@ -33,7 +33,7 @@
     
     pieView.frame = CGRectMake(20, 20, CGRectGetWidth([UIScreen mainScreen].bounds)-40, CGRectGetWidth([UIScreen mainScreen].bounds)-40);
     
-    [pieView setDataArray:@[@(0.01), @(0.02), @(0.03), @(0.1), @(0.14), @(0.2), @(0.23), @(0.27)]];
+    [pieView setDataArray:[@[@(0.02),  @(0.23),@(0.03), @(0.01), @(0.1), @(0.2), @(0.27), @(0.14)] mutableCopy]];
 }
 
 

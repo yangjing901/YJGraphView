@@ -10,16 +10,26 @@
 
 @implementation YJGraphPieView
 
-- (void)setDataArray:(NSArray<NSNumber *> *)dataArray {
+- (void)setDataArray:(NSMutableArray<NSNumber *> *)dataArray {
     
     //check data
     CGFloat totalPersent = 0;
 
+    //将数组按从小到大顺序排序,顺带检测数据，饼状图数据总和不应该超过1
     for (NSInteger i = 0, count = dataArray.count-1; i < count; i++) {
-        CGFloat persent1 = [dataArray[i] floatValue];
-        for (NSInteger j = 1, count = dataArray.count; i < count; i++) {
-            CGFloat persent2 = [dataArray[j] floatValue];
+        CGFloat persent0 = [dataArray[i] floatValue];
+        totalPersent += persent0;
+        if (totalPersent > 1) {
+            NSLog(@"yangjing_%@: totalPersent > 1", NSStringFromClass([self class]));
+            return;
+        }
         
+        for (NSInteger j = 0, count = dataArray.count - 1 - i; j < count; j++) {
+            CGFloat persent1 = [dataArray[j] floatValue];
+            CGFloat persent2 = [dataArray[j+1] floatValue];
+            if (persent2 < persent1) {
+                [dataArray exchangeObjectAtIndex:j withObjectAtIndex:j+1];
+            }
         }
 
     }
@@ -27,11 +37,13 @@
     CGFloat viewWidth = CGRectGetWidth(self.bounds);
     CGFloat viewHeight = CGRectGetHeight(self.bounds);
 
+    //饼图半径
     CGFloat radius = (viewWidth-120)/2;
+    //饼图中心
     CGPoint center = CGPointMake(viewWidth/2, viewWidth/2);
-    
+    //饼图起始角度
     CGFloat currentAngle = -M_PI/2.0;
-
+    //画图
     for (NSInteger i = 0, count = dataArray.count; i < count; i++) {
         
         CGFloat persent = [dataArray[i] floatValue];

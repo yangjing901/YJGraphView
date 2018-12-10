@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  dataArray : 数据源
  *  lineColor : 条形颜色
  */
-- (void)setDataArray:(NSArray<NSNumber *> *)dataArray;
+- (void)setDataArray:(NSMutableArray<NSNumber *> *)dataArray;
 
 @end
 
