@@ -12,7 +12,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, YJGraphThemeType) {
+    YJGraphThemeTypeLight,
+    YJGraphThemeTypeDark
+};
+
 @interface YJGraphBrokenLineView : UIView
+
+@property (nonatomic, assign) YJGraphThemeType themeType;
 
 /**
  *  设置横轴坐标
