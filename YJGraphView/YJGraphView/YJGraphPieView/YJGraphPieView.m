@@ -44,7 +44,7 @@
     //饼图半径
     CGFloat radius = (viewWidth-120)/2;
     //饼图中心
-    CGPoint center = CGPointMake(viewWidth/2, viewWidth/2);
+    CGPoint center = CGPointMake(viewWidth/2, viewHeight/2);
     //饼图起始角度
     CGFloat currentAngle = -M_PI/2.0;
     //画图
@@ -103,7 +103,7 @@
         //画标注线
         UIBezierPath *linePath = [UIBezierPath bezierPath];
         
-        CGFloat descHeight = [UIFont systemFontOfSize:10].lineHeight+10;
+        CGFloat descHeight = viewHeight/(count+1)/2;
         
         //ps:数学不太好，这里很麻烦的把坐标系分成四个象限区分处理，应该能有更好的方法
         if (centerAngle > -M_PI/2.0 && centerAngle <= 0) {
@@ -115,11 +115,11 @@
             //画标注线
             CGFloat linePointY = descHeight*(i+1);
             [linePath moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [linePath addLineToPoint:CGPointMake(viewWidth-40, linePointY)];
+            [linePath addLineToPoint:CGPointMake(targetPointX, linePointY)];
             [linePath addLineToPoint:CGPointMake(viewWidth, linePointY)];
 
             itemLabel.textAlignment = NSTextAlignmentRight;
-            itemLabel.frame = CGRectMake(viewWidth-60, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
+            itemLabel.frame = CGRectMake(viewWidth-40, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 40, [UIFont systemFontOfSize:6].lineHeight);
 
         } else if (centerAngle > 0 && centerAngle <= M_PI/2.0) {
             targetPointX = center.x + (targetPointX + 5);
@@ -128,11 +128,11 @@
 
             CGFloat linePointY = descHeight*(i+1)+center.y;
             [linePath moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [linePath addLineToPoint:CGPointMake(viewWidth-40, linePointY)];
+            [linePath addLineToPoint:CGPointMake(targetPointX, linePointY)];
             [linePath addLineToPoint:CGPointMake(viewWidth, linePointY)];
             
             itemLabel.textAlignment = NSTextAlignmentRight;
-            itemLabel.frame = CGRectMake(viewWidth-60, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
+            itemLabel.frame = CGRectMake(viewWidth-40, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 40, [UIFont systemFontOfSize:6].lineHeight);
             
         } else if (centerAngle > M_PI/2.0 && centerAngle <= M_PI) {
             targetPointX = center.x - (targetPointX + 5);
@@ -141,24 +141,24 @@
 
             CGFloat linePointY = descHeight*(i+1)+center.y;
             [linePath moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [linePath addLineToPoint:CGPointMake(40, linePointY)];
+            [linePath addLineToPoint:CGPointMake(targetPointX, linePointY)];
             [linePath addLineToPoint:CGPointMake(0, linePointY)];
             
             itemLabel.textAlignment = NSTextAlignmentLeft;
-            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
+            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 40, [UIFont systemFontOfSize:6].lineHeight);
             
         } else {
             targetPointX = center.x - (targetPointX + 5);
             targetPointY = center.y - (targetPointY + 5);
             pointView.center = CGPointMake(targetPointX, targetPointY);
 
-            CGFloat linePointY = descHeight*(i+1);
+            CGFloat linePointY = descHeight*(count - i);
             [linePath moveToPoint:CGPointMake(targetPointX, targetPointY)];
-            [linePath addLineToPoint:CGPointMake(40, linePointY)];
+            [linePath addLineToPoint:CGPointMake(targetPointX, linePointY)];
             [linePath addLineToPoint:CGPointMake(0, linePointY)];
             
             itemLabel.textAlignment = NSTextAlignmentLeft;
-            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 60, [UIFont systemFontOfSize:6].lineHeight);
+            itemLabel.frame = CGRectMake(0, linePointY-[UIFont systemFontOfSize:6].lineHeight-3, 40, [UIFont systemFontOfSize:6].lineHeight);
         }
         
         CAShapeLayer *shapeLayer2 = [CAShapeLayer new];
@@ -189,5 +189,6 @@
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
     [shapeLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
+
 
 @end

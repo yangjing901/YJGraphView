@@ -248,7 +248,6 @@
 /* 画折线图 */
 - (void)setDataArray:(NSArray<NSNumber *> *)dataArray lineColor:(UIColor *)lineColor {
     
-    CGFloat viewHeight = CGRectGetHeight(self.bounds);
     CGFloat viewWidth = CGRectGetWidth(self.bounds);
 
     CGFloat xAxisItemWidth;
@@ -269,10 +268,11 @@
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     
+    //按从0开始（如：0，100，200，300），从1开始（如：0，1000，1100，1200）区分处理
     if (_yAxisMinItemVaule == 0) {
         CGFloat yAxisItemOffset = _yAxisMaxItemVaule/(_yAxisItemsCount-1);
         
-        for (NSInteger i = 0, count = dataArray.count; i<count; i++) {
+        for (NSInteger i = 0, count = MIN(dataArray.count, _xAxisItems.count); i<count; i++) {
             //计算数据点的坐标
             CGFloat itemPositionX = xAxisItemWidth*i;
             
@@ -301,24 +301,45 @@
             [_xAxisView addSubview:pointView];
             pointView.frame = CGRectMake(0, 0, 3, 3);
             pointView.center = CGPointMake(itemPositionX, itemPositionY);
-            
+
             UILabel *itemLabel = ({
                 UILabel *label = [[UILabel alloc] init];
-                label.font = [UIFont systemFontOfSize:6];
+                label.font = [UIFont systemFontOfSize:10];
                 label.textAlignment = NSTextAlignmentCenter;
                 label.textColor = _themeColor;
+                label.adjustsFontSizeToFitWidth = YES;
                 label.text = [NSString stringWithFormat:@"%.2f", item];
                 label;
             });
             [_xAxisView addSubview:itemLabel];
             itemLabel.frame = CGRectMake(0, 0, xAxisItemWidth, [UIFont systemFontOfSize:6].lineHeight);
             
-            //第一个数据显示的位置往右偏，防止超出坐标轴
-            if (i == 0) {
-                itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
-            } else {
-                itemLabel.center = CGPointMake(itemPositionX, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
+            //对label位置进行调整，
+            if (i < count-1) {
+                CGFloat naxtItem = [dataArray[i+1] floatValue];
+                if (naxtItem < item) {
+                    //第一个数据显示的位置往右偏，防止超出坐标轴
+                    if (i == 0) {
+                        itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY-[UIFont systemFontOfSize:10].lineHeight);
+                    } else {
+                        itemLabel.center = CGPointMake(itemPositionX, itemPositionY-[UIFont systemFontOfSize:10].lineHeight);
+                        
+                    }
+                } else {
+                    if (i == 0) {
+                        itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
+                    } else {
+                        itemLabel.center = CGPointMake(itemPositionX, itemPositionY+[UIFont systemFontOfSize:6].lineHeight);
+                    }
+                }
                 
+            } else {
+                if (i == 0) {
+                    itemLabel.center = CGPointMake(itemPositionX+xAxisItemWidth/2, itemPositionY+[UIFont systemFontOfSize:10].lineHeight);
+                } else {
+                    itemLabel.center = CGPointMake(itemPositionX, itemPositionY+[UIFont systemFontOfSize:10].lineHeight);
+                    
+                }
             }
         }
     } else {
@@ -347,7 +368,7 @@
             } else {
                 [path addLineToPoint:CGPointMake(itemPositionX, itemPositionY)];
             }
-            
+
             UIView *pointView = ({
                 UIView *view = [[UIView alloc] init];
                 view.backgroundColor = lineColor;
@@ -360,9 +381,10 @@
             
             UILabel *itemLabel = ({
                 UILabel *label = [[UILabel alloc] init];
-                label.font = [UIFont systemFontOfSize:6];
+                label.font = [UIFont systemFontOfSize:10];
                 label.textAlignment = NSTextAlignmentCenter;
                 label.textColor = _themeColor;
+                label.adjustsFontSizeToFitWidth = YES;
                 label.text = [NSString stringWithFormat:@"%.2f", item];
                 label;
             });
