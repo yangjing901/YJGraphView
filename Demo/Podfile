@@ -1,0 +1,3 @@
+target 'YJGraphView' do
+	pod 'YJGraphView'
+end

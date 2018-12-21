@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0645ADD8D50A7F5F6F2DE40C53D10720 /* YJGraphPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD4FC117A21808BDFF6B6541B7F8A92 /* YJGraphPieView.m */; };
+		24D2048DB04A122E39D1B944BE9737ED /* YJGraphBrokenLineView.h in Headers */ = {isa = PBXBuildFile; fileRef = E85440F273F976D80BE19F4C6335D7EC /* YJGraphBrokenLineView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		691D47A3A10265A4E77B0A94231C6353 /* YJGraphPieView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3230CDC4528BBE408454074290622B7B /* YJGraphPieView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		72632C15F834D0FBCF98C3AF053B6DC9 /* YJGraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 907A5EE8A404BD482BB5DD8C3C227FB6 /* YJGraphBarView.m */; };
+		735601BC3F34AD3A2E9CE2AE063D5E37 /* YJGraphBrokenLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CFE2F10B6DEE3BA65462250F9F0CC6 /* YJGraphBrokenLineView.m */; };
+		9BBC24C033C56D7F39290F6526372B74 /* YJGraphBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 513BF30546468A44846E08FC46C50E31 /* YJGraphBarView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		ABC18CC704E7EA692383C0864A69F812 /* Pods-YJGraphView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 411E49159D4DC0EF534283AF74FAC43F /* Pods-YJGraphView-dummy.m */; };
+		DC8293210CDB8DD1668E3293B82D314E /* YJGraphView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9294B4DE2D81570A56271BCAB9B96653 /* YJGraphView-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1D2C60AA9E482699B02C8FD424819578 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D6167068655735FF8AD17833CB12D671;
+			remoteInfo = YJGraphView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02D2FB81F16B45DF4F795B31E50EF25B /* YJGraphView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YJGraphView.xcconfig; sourceTree = "<group>"; };
+		03D3E7EA34020AA0B3F7F6931A582F1B /* Pods-YJGraphView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YJGraphView.release.xcconfig"; sourceTree = "<group>"; };
+		06CFE2F10B6DEE3BA65462250F9F0CC6 /* YJGraphBrokenLineView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YJGraphBrokenLineView.m; path = YJGraphView/YJGraphBrokenLineView/YJGraphBrokenLineView.m; sourceTree = "<group>"; };
+		12F9321411E654A904A0D7A384A6BCFC /* Pods-YJGraphView-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YJGraphView-resources.sh"; sourceTree = "<group>"; };
+		205381303A29B2EA37478F6087557E44 /* libPods-YJGraphView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-YJGraphView.a"; path = "libPods-YJGraphView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3230CDC4528BBE408454074290622B7B /* YJGraphPieView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YJGraphPieView.h; path = YJGraphView/YJGraphPieView/YJGraphPieView.h; sourceTree = "<group>"; };
+		411E49159D4DC0EF534283AF74FAC43F /* Pods-YJGraphView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-YJGraphView-dummy.m"; sourceTree = "<group>"; };
+		41D64F6E3185CC085895237EF5BB300E /* Pods-YJGraphView-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YJGraphView-acknowledgements.markdown"; sourceTree = "<group>"; };
+		504EBFC56BD295CB557085B97002FCEA /* libYJGraphView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYJGraphView.a; path = libYJGraphView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EF5AEE3593F0CE6F69C6E6ECEA2CE0 /* Pods-YJGraphView-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YJGraphView-acknowledgements.plist"; sourceTree = "<group>"; };
+		513BF30546468A44846E08FC46C50E31 /* YJGraphBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YJGraphBarView.h; path = YJGraphView/YJGraphBarView/YJGraphBarView.h; sourceTree = "<group>"; };
+		78AEAA0FD35E45933B93E00BD669A4A0 /* YJGraphView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YJGraphView-prefix.pch"; sourceTree = "<group>"; };
+		907A5EE8A404BD482BB5DD8C3C227FB6 /* YJGraphBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YJGraphBarView.m; path = YJGraphView/YJGraphBarView/YJGraphBarView.m; sourceTree = "<group>"; };
+		9294B4DE2D81570A56271BCAB9B96653 /* YJGraphView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YJGraphView-dummy.m"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A89FE62BECF1DC30A8B10F9A170A0870 /* Pods-YJGraphView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YJGraphView.debug.xcconfig"; sourceTree = "<group>"; };
+		B04EC50F18A380DAB8C927A033022364 /* Pods-YJGraphView-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YJGraphView-frameworks.sh"; sourceTree = "<group>"; };
+		E85440F273F976D80BE19F4C6335D7EC /* YJGraphBrokenLineView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YJGraphBrokenLineView.h; path = YJGraphView/YJGraphBrokenLineView/YJGraphBrokenLineView.h; sourceTree = "<group>"; };
+		EDD4FC117A21808BDFF6B6541B7F8A92 /* YJGraphPieView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YJGraphPieView.m; path = YJGraphView/YJGraphPieView/YJGraphPieView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4ABF36C8ECC6EDC8211BA14DE5070E51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6919ECA50DA6A7B37CE0820DDCF82089 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5AF65004B178444799D86204D5B59FBC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				917A14C60BCD5F63CE023CD2E09DF41B /* Pods-YJGraphView */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				ABAEA3F185C0C3F585D95620D388FD65 /* Pods */,
+				B37381292EC2BF6C4D0A6972F6CFE3DF /* Products */,
+				5AF65004B178444799D86204D5B59FBC /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8CFADD21625BEA4D48A048BD94712041 /* YJGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				513BF30546468A44846E08FC46C50E31 /* YJGraphBarView.h */,
+				907A5EE8A404BD482BB5DD8C3C227FB6 /* YJGraphBarView.m */,
+				E85440F273F976D80BE19F4C6335D7EC /* YJGraphBrokenLineView.h */,
+				06CFE2F10B6DEE3BA65462250F9F0CC6 /* YJGraphBrokenLineView.m */,
+				3230CDC4528BBE408454074290622B7B /* YJGraphPieView.h */,
+				EDD4FC117A21808BDFF6B6541B7F8A92 /* YJGraphPieView.m */,
+				B84BCCCC228EABC8B842F302AFBB78B0 /* Support Files */,
+			);
+			name = YJGraphView;
+			path = YJGraphView;
+			sourceTree = "<group>";
+		};
+		917A14C60BCD5F63CE023CD2E09DF41B /* Pods-YJGraphView */ = {
+			isa = PBXGroup;
+			children = (
+				41D64F6E3185CC085895237EF5BB300E /* Pods-YJGraphView-acknowledgements.markdown */,
+				50EF5AEE3593F0CE6F69C6E6ECEA2CE0 /* Pods-YJGraphView-acknowledgements.plist */,
+				411E49159D4DC0EF534283AF74FAC43F /* Pods-YJGraphView-dummy.m */,
+				B04EC50F18A380DAB8C927A033022364 /* Pods-YJGraphView-frameworks.sh */,
+				12F9321411E654A904A0D7A384A6BCFC /* Pods-YJGraphView-resources.sh */,
+				A89FE62BECF1DC30A8B10F9A170A0870 /* Pods-YJGraphView.debug.xcconfig */,
+				03D3E7EA34020AA0B3F7F6931A582F1B /* Pods-YJGraphView.release.xcconfig */,
+			);
+			name = "Pods-YJGraphView";
+			path = "Target Support Files/Pods-YJGraphView";
+			sourceTree = "<group>";
+		};
+		ABAEA3F185C0C3F585D95620D388FD65 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CFADD21625BEA4D48A048BD94712041 /* YJGraphView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B37381292EC2BF6C4D0A6972F6CFE3DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				205381303A29B2EA37478F6087557E44 /* libPods-YJGraphView.a */,
+				504EBFC56BD295CB557085B97002FCEA /* libYJGraphView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B84BCCCC228EABC8B842F302AFBB78B0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				02D2FB81F16B45DF4F795B31E50EF25B /* YJGraphView.xcconfig */,
+				9294B4DE2D81570A56271BCAB9B96653 /* YJGraphView-dummy.m */,
+				78AEAA0FD35E45933B93E00BD669A4A0 /* YJGraphView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YJGraphView";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2283BD5C206932BDB86D048A590187CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43DEA712BEB60E9994F636ADF758C2A1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BBC24C033C56D7F39290F6526372B74 /* YJGraphBarView.h in Headers */,
+				24D2048DB04A122E39D1B944BE9737ED /* YJGraphBrokenLineView.h in Headers */,
+				691D47A3A10265A4E77B0A94231C6353 /* YJGraphPieView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5B602F789E6DE8F3048B9F4714F8EA34 /* Pods-YJGraphView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C15F1E7D77BA6B6DBE4EDF2B3318318 /* Build configuration list for PBXNativeTarget "Pods-YJGraphView" */;
+			buildPhases = (
+				2283BD5C206932BDB86D048A590187CC /* Headers */,
+				660A3474B362F1AEC2D352073B5D5DDD /* Sources */,
+				6919ECA50DA6A7B37CE0820DDCF82089 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23AE86B6C9E1D1BADDA82286233F11E5 /* PBXTargetDependency */,
+			);
+			name = "Pods-YJGraphView";
+			productName = "Pods-YJGraphView";
+			productReference = 205381303A29B2EA37478F6087557E44 /* libPods-YJGraphView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D6167068655735FF8AD17833CB12D671 /* YJGraphView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CB47CA553F5FDC938C61FFED4C4AE38 /* Build configuration list for PBXNativeTarget "YJGraphView" */;
+			buildPhases = (
+				43DEA712BEB60E9994F636ADF758C2A1 /* Headers */,
+				DDFF9C898F39EEA7B151B6B66A6E2A8F /* Sources */,
+				4ABF36C8ECC6EDC8211BA14DE5070E51 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YJGraphView;
+			productName = YJGraphView;
+			productReference = 504EBFC56BD295CB557085B97002FCEA /* libYJGraphView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B37381292EC2BF6C4D0A6972F6CFE3DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B602F789E6DE8F3048B9F4714F8EA34 /* Pods-YJGraphView */,
+				D6167068655735FF8AD17833CB12D671 /* YJGraphView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		660A3474B362F1AEC2D352073B5D5DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABC18CC704E7EA692383C0864A69F812 /* Pods-YJGraphView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDFF9C898F39EEA7B151B6B66A6E2A8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72632C15F834D0FBCF98C3AF053B6DC9 /* YJGraphBarView.m in Sources */,
+				735601BC3F34AD3A2E9CE2AE063D5E37 /* YJGraphBrokenLineView.m in Sources */,
+				0645ADD8D50A7F5F6F2DE40C53D10720 /* YJGraphPieView.m in Sources */,
+				DC8293210CDB8DD1668E3293B82D314E /* YJGraphView-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		23AE86B6C9E1D1BADDA82286233F11E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YJGraphView;
+			target = D6167068655735FF8AD17833CB12D671 /* YJGraphView */;
+			targetProxy = 1D2C60AA9E482699B02C8FD424819578 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		61C572A826CCC40D16D7B56BC1252575 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A89FE62BECF1DC30A8B10F9A170A0870 /* Pods-YJGraphView.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8322AE3FB6DF16A80BCBA121575DBB8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		8DC861F53B471F106BC8ACC4475EFA12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		9572F0F5152A0BEF072D688874F9E87B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03D3E7EA34020AA0B3F7F6931A582F1B /* Pods-YJGraphView.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA7313E9C7285E5BD5DCD03E080D4D6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02D2FB81F16B45DF4F795B31E50EF25B /* YJGraphView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/YJGraphView/YJGraphView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = YJGraphView;
+				PRODUCT_NAME = YJGraphView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFB375F82C429FA333E2EA17D9C141C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02D2FB81F16B45DF4F795B31E50EF25B /* YJGraphView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/YJGraphView/YJGraphView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = YJGraphView;
+				PRODUCT_NAME = YJGraphView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0CB47CA553F5FDC938C61FFED4C4AE38 /* Build configuration list for PBXNativeTarget "YJGraphView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7313E9C7285E5BD5DCD03E080D4D6D /* Debug */,
+				FFB375F82C429FA333E2EA17D9C141C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C15F1E7D77BA6B6DBE4EDF2B3318318 /* Build configuration list for PBXNativeTarget "Pods-YJGraphView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61C572A826CCC40D16D7B56BC1252575 /* Debug */,
+				9572F0F5152A0BEF072D688874F9E87B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8322AE3FB6DF16A80BCBA121575DBB8A /* Debug */,
+				8DC861F53B471F106BC8ACC4475EFA12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -1,0 +1,16 @@
+PODS:
+  - YJGraphView (0.0.4)
+
+DEPENDENCIES:
+  - YJGraphView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - YJGraphView
+
+SPEC CHECKSUMS:
+  YJGraphView: 9edbf87ebae21b55b7867229e25995f4ead53bc5
+
+PODFILE CHECKSUM: 36326ecec8eddc82ded9bbe70f8fa1ff48ea7059
+
+COCOAPODS: 1.5.3

@@ -15,9 +15,7 @@
 		395F76D521B7985600C92ED6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76D421B7985600C92ED6 /* main.m */; };
 		395F76DF21B7985600C92ED6 /* YJGraphViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76DE21B7985600C92ED6 /* YJGraphViewTests.m */; };
 		395F76EA21B7985600C92ED6 /* YJGraphViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76E921B7985600C92ED6 /* YJGraphViewUITests.m */; };
-		395F76FB21B798F100C92ED6 /* YJGraphBrokenLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */; };
-		395F76FF21B7D34200C92ED6 /* YJGraphBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */; };
-		39E0B27521B8FD230016B65D /* YJGraphPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E0B27421B8FD230016B65D /* YJGraphPieView.m */; };
+		C591CE544418B1CA5D2C00B2 /* libPods-YJGraphView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 631397D417F8C1B253941C8E /* libPods-YJGraphView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +52,9 @@
 		395F76E521B7985600C92ED6 /* YJGraphViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YJGraphViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		395F76E921B7985600C92ED6 /* YJGraphViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphViewUITests.m; sourceTree = "<group>"; };
 		395F76EB21B7985600C92ED6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		395F76F921B798F100C92ED6 /* YJGraphBrokenLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJGraphBrokenLineView.h; sourceTree = "<group>"; };
-		395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphBrokenLineView.m; sourceTree = "<group>"; };
-		395F76FD21B7D34200C92ED6 /* YJGraphBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJGraphBarView.h; sourceTree = "<group>"; };
-		395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphBarView.m; sourceTree = "<group>"; };
-		39E0B27321B8FD230016B65D /* YJGraphPieView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJGraphPieView.h; sourceTree = "<group>"; };
-		39E0B27421B8FD230016B65D /* YJGraphPieView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJGraphPieView.m; sourceTree = "<group>"; };
+		5544CD1740A3B3B4E6A3D94E /* Pods-YJGraphView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YJGraphView.release.xcconfig"; path = "Pods/Target Support Files/Pods-YJGraphView/Pods-YJGraphView.release.xcconfig"; sourceTree = "<group>"; };
+		631397D417F8C1B253941C8E /* libPods-YJGraphView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YJGraphView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00636D4F7803F3B3828833A /* Pods-YJGraphView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YJGraphView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YJGraphView/Pods-YJGraphView.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C591CE544418B1CA5D2C00B2 /* libPods-YJGraphView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15278EC360A187AC945A5809 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A00636D4F7803F3B3828833A /* Pods-YJGraphView.debug.xcconfig */,
+				5544CD1740A3B3B4E6A3D94E /* Pods-YJGraphView.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		395F76B921B7985400C92ED6 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +99,8 @@
 				395F76DD21B7985600C92ED6 /* YJGraphViewTests */,
 				395F76E821B7985600C92ED6 /* YJGraphViewUITests */,
 				395F76C321B7985400C92ED6 /* Products */,
+				15278EC360A187AC945A5809 /* Pods */,
+				C315CA61D7BAC91E11F8F3E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,7 +117,6 @@
 		395F76C421B7985400C92ED6 /* YJGraphView */ = {
 			isa = PBXGroup;
 			children = (
-				395F76F721B7989E00C92ED6 /* YJGraphView */,
 				395F76C521B7985400C92ED6 /* AppDelegate.h */,
 				395F76C621B7985400C92ED6 /* AppDelegate.m */,
 				395F76C821B7985400C92ED6 /* ViewController.h */,
@@ -142,41 +148,12 @@
 			path = YJGraphViewUITests;
 			sourceTree = "<group>";
 		};
-		395F76F721B7989E00C92ED6 /* YJGraphView */ = {
+		C315CA61D7BAC91E11F8F3E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39E0B27221B8FD130016B65D /* YJGraphPieView */,
-				395F76FC21B7D33200C92ED6 /* YJGraphBarView */,
-				395F76F821B7989E00C92ED6 /* YJGraphBrokenLineView */,
+				631397D417F8C1B253941C8E /* libPods-YJGraphView.a */,
 			);
-			path = YJGraphView;
-			sourceTree = "<group>";
-		};
-		395F76F821B7989E00C92ED6 /* YJGraphBrokenLineView */ = {
-			isa = PBXGroup;
-			children = (
-				395F76F921B798F100C92ED6 /* YJGraphBrokenLineView.h */,
-				395F76FA21B798F100C92ED6 /* YJGraphBrokenLineView.m */,
-			);
-			path = YJGraphBrokenLineView;
-			sourceTree = "<group>";
-		};
-		395F76FC21B7D33200C92ED6 /* YJGraphBarView */ = {
-			isa = PBXGroup;
-			children = (
-				395F76FD21B7D34200C92ED6 /* YJGraphBarView.h */,
-				395F76FE21B7D34200C92ED6 /* YJGraphBarView.m */,
-			);
-			path = YJGraphBarView;
-			sourceTree = "<group>";
-		};
-		39E0B27221B8FD130016B65D /* YJGraphPieView */ = {
-			isa = PBXGroup;
-			children = (
-				39E0B27321B8FD230016B65D /* YJGraphPieView.h */,
-				39E0B27421B8FD230016B65D /* YJGraphPieView.m */,
-			);
-			path = YJGraphPieView;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +163,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 395F76EE21B7985600C92ED6 /* Build configuration list for PBXNativeTarget "YJGraphView" */;
 			buildPhases = (
+				10112CD4596AAD1AD2C1CE5B /* [CP] Check Pods Manifest.lock */,
 				395F76BE21B7985400C92ED6 /* Sources */,
 				395F76BF21B7985400C92ED6 /* Frameworks */,
 				395F76C021B7985400C92ED6 /* Resources */,
@@ -304,17 +282,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		10112CD4596AAD1AD2C1CE5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YJGraphView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		395F76BE21B7985400C92ED6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				395F76CA21B7985400C92ED6 /* ViewController.m in Sources */,
-				39E0B27521B8FD230016B65D /* YJGraphPieView.m in Sources */,
 				395F76D521B7985600C92ED6 /* main.m in Sources */,
-				395F76FF21B7D34200C92ED6 /* YJGraphBarView.m in Sources */,
 				395F76C721B7985400C92ED6 /* AppDelegate.m in Sources */,
-				395F76FB21B798F100C92ED6 /* YJGraphBrokenLineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +483,7 @@
 		};
 		395F76EF21B7985600C92ED6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A00636D4F7803F3B3828833A /* Pods-YJGraphView.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -500,6 +501,7 @@
 		};
 		395F76F021B7985600C92ED6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5544CD1740A3B3B4E6A3D94E /* Pods-YJGraphView.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
