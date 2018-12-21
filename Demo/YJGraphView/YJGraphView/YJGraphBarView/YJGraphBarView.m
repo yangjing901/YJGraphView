@@ -1,0 +1,249 @@
+//
+//  YJGraphBarView.m
+//  YJGraphView
+//
+//  Created by Yang on 2018/12/5.
+//  Copyright © 2018 YangJing. All rights reserved.
+//
+
+#import "YJGraphBarView.h"
+
+@implementation YJGraphBarView {
+    NSArray <NSString *> *_xAxisItems;  //横轴坐标项
+    BOOL _xAxisAutoFitWidth;            //横轴坐标单位长度是否根据横轴坐标项数量适应；
+    
+    CGFloat _yAxisMaxItemVaule;         //纵轴坐标项最大值
+    CGFloat _yAxisMinItemVaule;         //纵轴坐标项最小值
+    NSInteger _yAxisItemsCount;         //纵轴坐标项等分数
+    
+    UIScrollView *_xAxisView;           //滚动视图，实现横轴滚动效果
+}
+
+- (void)drawRect:(CGRect)rect {
+    
+    //画一条竖线作为纵轴；（如果不需要横轴滚动，这里就可以把横纵轴一起画了，需要滚动则得把横纵放在scrollView上）
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(context, 255, 255, 255, 1);
+    CGContextSetLineWidth(context, 1);
+    CGContextMoveToPoint(context, 60, 30);
+    CGContextAddLineToPoint(context, 60, CGRectGetHeight(self.bounds)-60);
+    CGContextStrokePath(context);
+}
+
+//绘制横轴坐标
+- (void)setXAxisItems:(NSArray <NSString *> *)xAxisItems autoFitWidth:(BOOL)autoFitWidth {
+    _xAxisItems = xAxisItems;
+    _xAxisAutoFitWidth = autoFitWidth;
+    
+    CGFloat viewHeight = CGRectGetHeight(self.bounds);
+    CGFloat viewWidth = CGRectGetWidth(self.bounds);
+    
+    //设置滚动视图
+    _xAxisView = ({
+        UIScrollView *view = [[UIScrollView alloc] init];
+        view.backgroundColor = self.backgroundColor;
+        view.showsHorizontalScrollIndicator = NO;
+        view.bounces = NO;
+        view;
+    });
+    [self addSubview:_xAxisView];
+    _xAxisView.frame = CGRectMake(61, 30, viewWidth-60*2, viewHeight-30);
+    
+    //横轴单位长度
+    CGFloat xAxisItemWidth;
+    if (!autoFitWidth) {
+        _xAxisView.contentSize = CGSizeMake(30*(xAxisItems.count*2+1), 0);
+        xAxisItemWidth = 30;
+        
+    } else {
+        _xAxisView.contentSize = CGSizeMake(viewWidth-60*2, 0);
+        xAxisItemWidth = (viewWidth-60*2)/(xAxisItems.count*2+1);
+        
+    }
+    
+    //在滚动视图上画一条横线作为统计图横轴
+    CGFloat contentHeight = CGRectGetHeight(_xAxisView.bounds)-60;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(0, contentHeight)];
+    [path addLineToPoint:CGPointMake(_xAxisView.contentSize.width, contentHeight)];
+    
+    CAShapeLayer *lineLayer = [[CAShapeLayer alloc] init];
+    lineLayer.lineWidth = 1;
+    lineLayer.strokeColor = [UIColor whiteColor].CGColor;
+    lineLayer.path = path.CGPath;
+    [_xAxisView.layer addSublayer:lineLayer];
+    
+    //设置横轴坐标
+    for (NSInteger i = 0, count = xAxisItems.count*2+1; i<count; i++) {
+        
+        CGFloat xAxisItemPositionX = xAxisItemWidth*i;
+        
+        //画刻度线（横轴从0开始，0位置不需要刻度）
+        if (i > 0) {
+            UIBezierPath *subPath = [UIBezierPath bezierPath];
+            [subPath moveToPoint:CGPointMake(xAxisItemPositionX, contentHeight)];
+            [subPath addLineToPoint:CGPointMake(xAxisItemPositionX, contentHeight-3)];
+            
+            CAShapeLayer *subLineLayer = [[CAShapeLayer alloc] init];
+            subLineLayer.lineWidth = 1;
+            subLineLayer.strokeColor = [UIColor whiteColor].CGColor;
+            subLineLayer.path = subPath.CGPath;
+            [_xAxisView.layer addSublayer:subLineLayer];
+        }
+        
+        if (i%2) {
+            UILabel *xAxisItemLabel = ({
+                UILabel *label = [[UILabel alloc] init];
+                label.font = [UIFont systemFontOfSize:10];
+                label.textColor = [UIColor whiteColor];
+                label.textAlignment = NSTextAlignmentCenter;
+                label.text = xAxisItems[i/2];
+                label;
+            });
+            [_xAxisView addSubview:xAxisItemLabel];
+            
+            CGFloat textWidth = [xAxisItems[i/2] boundingRectWithSize:CGSizeMake(MAXFLOAT, [UIFont systemFontOfSize:10].lineHeight) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil].size.width;
+            
+            xAxisItemLabel.frame = CGRectMake(xAxisItemPositionX, contentHeight+textWidth/2, textWidth, [UIFont systemFontOfSize:10].lineHeight);
+            xAxisItemLabel.center = CGPointMake(xAxisItemPositionX+xAxisItemWidth/2, contentHeight+textWidth/2+[UIFont systemFontOfSize:10].lineHeight/2);
+            
+            //防止横轴标识显示不下，这里旋转45度
+            xAxisItemLabel.transform = CGAffineTransformMakeRotation(M_PI/4.0);
+        }
+    }
+}
+
+//设置纵轴坐标
+- (void)setYAxisMaxItem:(CGFloat)maxItem minItem:(CGFloat)minItem itemCount:(NSInteger)itemCount {
+    _yAxisMaxItemVaule = maxItem;
+    _yAxisMinItemVaule = minItem;
+    _yAxisItemsCount = itemCount;
+    
+    //暂时不支持负数（可以按需求变动）
+    if (minItem < 0) {
+        NSLog(@"yangjing_%@: minItem < 0", NSStringFromClass([self class]));
+        return;
+    }
+    
+    CGFloat contentHeight = CGRectGetHeight(_xAxisView.bounds)-60;
+    
+    //纵轴单位高度
+    CGFloat yAxisItemHeight = contentHeight/(itemCount+1);
+    
+    for (NSInteger i = 0; i < itemCount; i++) {
+        //纵轴刻度位置
+        CGFloat yAxisItemPositionY = contentHeight - yAxisItemHeight*(i+1);
+        
+        //画纵轴刻度
+        UIBezierPath *subPath = [UIBezierPath bezierPath];
+        [subPath moveToPoint:CGPointMake(60, yAxisItemPositionY+30)];
+        [subPath addLineToPoint:CGPointMake(57, yAxisItemPositionY+30)];
+        
+        CAShapeLayer *subLineLayer = [[CAShapeLayer alloc] init];
+        subLineLayer.lineWidth = 1;
+        subLineLayer.strokeColor = [UIColor whiteColor].CGColor;
+        subLineLayer.path = subPath.CGPath;
+        [self.layer addSublayer:subLineLayer];
+        
+        CGFloat yAxisItem = (maxItem-minItem)/(itemCount-1)*i+minItem;
+        
+        UILabel *yAxisItemLabel = ({
+            UILabel *label = [[UILabel alloc] init];
+            label.font = [UIFont systemFontOfSize:10];
+            label.textColor = [UIColor whiteColor];
+            label.textAlignment = NSTextAlignmentRight;
+            label.text = [NSString stringWithFormat:@"%.2f", yAxisItem];
+            label;
+        });
+        [self addSubview:yAxisItemLabel];
+        
+        yAxisItemLabel.frame = CGRectMake(0, yAxisItemPositionY+30-[UIFont systemFontOfSize:10].lineHeight/2, 55, [UIFont systemFontOfSize:10].lineHeight);
+        
+        //以每个刻度为起点画画一条平行于横轴的虚线
+        UIBezierPath *subPath2 = [UIBezierPath bezierPath];
+        [subPath2 moveToPoint:CGPointMake(0, yAxisItemPositionY)];
+        [subPath2 addLineToPoint:CGPointMake(_xAxisView.contentSize.width, yAxisItemPositionY)];
+        
+        CAShapeLayer *subLineLayer2 = [[CAShapeLayer alloc] init];
+        subLineLayer2.lineWidth = 0.5;
+        subLineLayer2.strokeColor = [UIColor whiteColor].CGColor;
+        subLineLayer2.path = subPath2.CGPath;
+        [subLineLayer2 setLineDashPattern:@[[NSNumber numberWithInteger:5]]];
+        [_xAxisView.layer addSublayer:subLineLayer2];
+    }
+}
+
+/* 画条形图 */
+- (void)setDataArray:(NSArray<NSNumber *> *)dataArray lineColor:(UIColor *)lineColor {
+    
+    CGFloat viewHeight = CGRectGetHeight(self.bounds);
+    CGFloat viewWidth = CGRectGetWidth(self.bounds);
+    CGFloat yAxisItemHeight = (viewHeight-60*2)/(_yAxisItemsCount+1);
+    CGFloat yAxisItemOffset = (_yAxisMaxItemVaule-_yAxisMinItemVaule)/(_yAxisItemsCount-1);
+
+    CGFloat xAxisItemWidth;
+    if (!_xAxisAutoFitWidth) {
+        xAxisItemWidth = 30;
+    } else {
+        xAxisItemWidth = ((viewWidth-60*2)/(_xAxisItems.count*2+1));
+        
+    }
+    CGFloat contentHeight = CGRectGetHeight(_xAxisView.bounds)-60;
+    
+    //设置条形图属性
+    CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
+    shapeLayer.lineWidth = xAxisItemWidth;
+    shapeLayer.strokeColor = lineColor.CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    for (NSInteger i = 0, count = dataArray.count; i<count; i++) {
+        //计算数据点的坐标,画线的起点位置为线的中心点，所以多偏移xAxisItemWidth/2
+        CGFloat itemPositionX = xAxisItemWidth*(i*2+1)+(xAxisItemWidth/2);
+    
+        [path moveToPoint:CGPointMake(itemPositionX, contentHeight)];
+        
+        CGFloat item = [dataArray[i] floatValue];
+        CGFloat itemPositionY;
+        if (item < _yAxisMinItemVaule) {
+            itemPositionY = contentHeight - yAxisItemHeight*(item/_yAxisMinItemVaule);
+            
+        } else if (item > _yAxisMaxItemVaule) {
+            itemPositionY = 30 - 30*((item-_yAxisMaxItemVaule)/yAxisItemOffset);
+            
+        } else {
+            itemPositionY = contentHeight - (yAxisItemHeight + item/_yAxisMaxItemVaule*(contentHeight-30-yAxisItemHeight));
+        }
+        
+        [path addLineToPoint:CGPointMake(itemPositionX, itemPositionY)];
+        
+        UILabel *itemLabel = ({
+            UILabel *label = [[UILabel alloc] init];
+            label.font = [UIFont systemFontOfSize:6];
+            label.textAlignment = NSTextAlignmentRight;
+            label.text = [NSString stringWithFormat:@"%.2f", item];
+            label;
+        });
+        [_xAxisView addSubview:itemLabel];
+        itemLabel.frame = CGRectMake(0, 0, xAxisItemWidth*2, [UIFont systemFontOfSize:6].lineHeight);
+        itemLabel.center = CGPointMake(itemPositionX-xAxisItemWidth/2, itemPositionY-[UIFont systemFontOfSize:6].lineHeight);
+
+    }
+    
+    shapeLayer.path = path.CGPath;
+    [_xAxisView.layer addSublayer:shapeLayer];
+    
+    //设置折线绘制动画
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 3;
+    pathAnimation.repeatCount = 1;
+    pathAnimation.removedOnCompletion = YES;
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    [shapeLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+}
+
+
+@end
